@@ -24,7 +24,7 @@ export class UserManagementService {
     return this.http.put(`${this.apiUrl}/${id}`, updatedData);
   }
 
-  deleteUser(id: number): Observable<any> {
+  deleteUser(id: number | string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

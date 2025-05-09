@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Cuti } from '../../model/cuti';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,15 @@ export class CutiService {
     private http: HttpClient
   ) { }
 
-  getCuti(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getCuti(): Observable<Cuti[]> {
+    return this.http.get<Cuti[]>(this.apiUrl);
   }
 
-  addCuti(newCuti: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, newCuti);
+  addCuti(newCuti: Cuti): Observable<any> {
+    return this.http.post(this.apiUrl, newCuti);
   }
 
-  updateCuti(id: string | null, updatedData: any): Observable<any> {
+  updateCuti(id: string | null, updatedData: Cuti): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, updatedData);
   }
 

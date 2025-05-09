@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -10,6 +9,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { EmployeeService } from './employee.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { Employee } from '../../model/employee';
 
 @Component({
   selector: 'app-employee',
@@ -27,7 +27,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrl: './employee.component.scss'
 })
 export class EmployeeComponent implements OnInit {
-  users: any[] = [];
+  users: Employee[] = [];
   isVisible = false;
   isEdit = false;
   editId = ''
@@ -120,7 +120,7 @@ export class EmployeeComponent implements OnInit {
     this.isVisible = false;
   }
 
-  deleteUser(id: number): void {
+  deleteUser(id: number | string): void {
     this.employeeService.deleteEmployee(id).subscribe(() => {
       this.loadUsers()
     })

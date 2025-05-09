@@ -10,7 +10,7 @@
       "password": "123456"
     },
     {
-      "id": 2,
+      "id": "2",
       "firstName": "test",
       "lastName": "andhy",
       "dateOfbirth": "2025-05-04T10:17:21.647Z",
@@ -19,9 +19,9 @@
       "password": "1232145214"
     },
     {
-      "firstName": "test",
+      "firstName": "test 2",
       "lastName": "user",
-      "dateOfbirth": "2025-05-04T10:26:56.301Z",
+      "dateOfbirth": "2025-05-07T14:02:52.190Z",
       "gender": "",
       "email": "user@mail.com",
       "password": "143214124",
@@ -30,7 +30,7 @@
   ],
   "employees": [
     {
-      "firstname": "john",
+      "firstname": "john doe",
       "lastname": "test",
       "gender": "Perempuan",
       "email": "john@mail.com",
@@ -74,6 +74,13 @@
       "startDate": "2025-05-19T11:06:21.455Z",
       "endDate": "2025-05-21T11:06:23.272Z",
       "reason": "testtetetst"
+    },
+    {
+      "id": "5431",
+      "employee": "andhy",
+      "startDate": "2025-05-05T13:49:39.113Z",
+      "endDate": "2025-05-06T13:49:41.305Z",
+      "reason": "tewtest"
     }
   ]
 }

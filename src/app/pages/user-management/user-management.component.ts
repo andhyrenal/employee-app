@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -10,6 +9,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { UserManagementService } from './user-management.service';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-user-management',
@@ -27,7 +27,7 @@ import { UserManagementService } from './user-management.service';
   styleUrl: './user-management.component.scss'
 })
 export class UserManagementComponent implements OnInit {
-  users: any[] = [];
+  users: User[] = [];
   isVisible = false;
   isEdit = false;
   editId: number | null = null;
@@ -128,7 +128,7 @@ export class UserManagementComponent implements OnInit {
     this.editId = null;
   }
 
-  deleteUser(id: number): void {
+  deleteUser(id: number | string): void {
     this.userService.deleteUser(id).subscribe(() => {
       this.loadUsers();
     })

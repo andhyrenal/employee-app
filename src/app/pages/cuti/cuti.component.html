@@ -32,7 +32,7 @@
         <nz-form-label [nzSpan]="6">First Name</nz-form-label>
         <nz-form-control [nzSpan]="16" [nzErrorTip]="'Employee Harus Diisi'">
           <nz-select *ngIf="users.length" formControlName="employee" placeholder="Select Employee">
-            <nz-option *ngFor="let emp of users" [nzValue]="emp.firstname" [nzLabel]="emp.firstname"></nz-option>
+            <nz-option *ngFor="let emp of users" [nzValue]="emp.firstName" [nzLabel]="emp.firstName"></nz-option>
           </nz-select>
         </nz-form-control>
       </nz-form-item>

@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -12,6 +11,8 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { CutiService } from './cuti.service';
 import { EmployeeService } from '../employee/employee.service';
+import { Cuti } from '../../model/cuti'
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-cuti',
@@ -30,8 +31,8 @@ import { EmployeeService } from '../employee/employee.service';
   styleUrl: './cuti.component.scss'
 })
 export class CutiComponent {
-  users: any[] = [];
-  cuti: any[] = [];
+  users: User[] = [];
+  cuti: Cuti[] = [];
   isVisible = false;
   isEdit = false;
   editId = '';
@@ -78,7 +79,13 @@ export class CutiComponent {
 
   loadCuti(): void {
     this.cutiService.getCuti().subscribe(data => {
-      this.cuti = data || [];
+      this.cuti = data.map((el: Cuti) : Cuti => ({
+          employee: el.employee,
+          id: el.id,
+          startDate: el.startDate,
+          endDate: el.endDate,
+          reason: el.reason
+      }))
     });
   }
 
@@ -93,21 +100,26 @@ export class CutiComponent {
     }
   }
 
-  showModal(user?: any): void {
+  showModal(cuti?: any): void {
     this.isVisible = true;
-    this.isEdit = !!user;
+    this.isEdit = !!cuti;
     if(this.isEdit) {
-      this.editId = user.id
+      this.editId = cuti.id
     }
     this.cutiForm.reset();
-    if (user) {
-      this.cutiForm.patchValue(user);
+    const patchCuti = {
+      ...cuti,
+      startDate: new Date(cuti.startDate),
+      endDate: new Date(cuti.endDate),
+    };
+    if (cuti) {
+      this.cutiForm.patchValue(patchCuti);
     }
   }
 
   handleOk(): void {
     if (this.cutiForm.valid) {
-      const user = {
+      const cuti = {
         ...this.cutiForm.value,
       }
       if (this.isEdit) {
@@ -118,7 +130,7 @@ export class CutiComponent {
         })
         this.createMessage('Update');
       } else {
-        this.cutiService.addCuti(user).subscribe(() => {
+        this.cutiService.addCuti(cuti).subscribe(() => {
           this.loadCuti()
           this.resetForm()
         })
