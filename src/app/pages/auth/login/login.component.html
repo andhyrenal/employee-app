@@ -1,0 +1,23 @@
+<div style="width: 100%;">
+  <div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" nz-form [nzLayout]="'vertical'" class="login-form">
+      <h2>Login</h2>
+
+      <nz-form-item>
+        <nz-form-label>Email</nz-form-label>
+        <nz-form-control [nzErrorTip]="'Email tidak valid'">
+          <input nz-input formControlName="email" placeholder="Masukkan email" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Password</nz-form-label>
+        <nz-form-control [nzErrorTip]="'Password wajib diisi'">
+          <input nz-input type="password" formControlName="password" placeholder="Masukkan password" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" [disabled]="loginForm.invalid" class="login-button">Login</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<button nz-button nzType="primary" (click)="showModal()">Tambah Cuti Pegawai</button>
+<div style="margin-top: 2rem;">
+  <nz-table [nzData]="cuti" [nzBordered]="true" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Tgl Mulai Cuti</th>
+        <th>Tgl Akhir Cuti</th>
+        <th>Alasan</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cuti">
+        <td>{{ item.employee }}</td>
+        <td>{{ item.startDate | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ item.endDate | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ item.reason }}</td>
+        <td>
+          <button nz-button nzType="link" (click)="showModal(item)">Edit</button>
+          <button nz-button nzType="link" nzDanger (click)="deleteUser(item.id)" >Hapus</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{ isEdit ? 'Edit User' : 'Tambah User' }}" (nzOnCancel)="handleCancel()">
+  <ng-container *nzModalContent>
+    <form [formGroup]="cutiForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">First Name</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Employee Harus Diisi'">
+          <nz-select *ngIf="users.length" formControlName="employee" placeholder="Select Employee">
+            <nz-option *ngFor="let emp of users" [nzValue]="emp.firstname" [nzLabel]="emp.firstname"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Start Date Cuti</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Tanggal Mulai Harus Diisi'">
+          <nz-date-picker [nzDisabledDate]="disabledStartDate" formControlName="startDate"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">End Date Cuti</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Tanggal Selesai Harus Diisi'">
+          <nz-date-picker [nzDisabledDate]="disabledEndDate" formControlName="endDate"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Alasan</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Alasan Harus Diisi'">
+          <input nz-input formControlName="reason" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+    <button nz-button nzType="primary" (click)="handleOk()">Simpan</button>
+  </div>
+</nz-modal>

@@ -1,0 +1,73 @@
+<button nz-button nzType="primary" (click)="showModal()">Tambah Employee</button>
+<div style="margin-top: 2rem;">
+  <nz-table [nzData]="users" [nzBordered]="true" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>Telepon</th>
+        <th>Alamat</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstname }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.address }}</td>
+        <td>
+          <button nz-button nzType="link" (click)="showModal(user)">Edit</button>
+          <button nz-button nzType="link" nzDanger (click)="deleteUser(user.id)">Hapus</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{ isEdit ? 'Edit Employee' : 'Tambah Employee' }}">
+  <ng-container *nzModalContent>
+    <form [formGroup]="userForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">First Name</nz-form-label>
+        <nz-form-control [nzSpan]="16">
+          <input nz-input formControlName="firstname" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Last Name</nz-form-label>
+        <nz-form-control [nzSpan]="16">
+          <input nz-input formControlName="lastname" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Email</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Email tidak valid'">
+          <input nz-input formControlName="email" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Password</nz-form-label>
+        <nz-form-control [nzSpan]="16">
+          <input nz-input formControlName="password" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Phone</nz-form-label>
+        <nz-form-control [nzSpan]="16">
+          <input nz-input formControlName="phone" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Address</nz-form-label>
+        <nz-form-control [nzSpan]="16">
+          <input nz-input formControlName="address" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+    <button nz-button nzType="primary" [disabled]="userForm.invalid" (click)="handleOk()">Simpan</button>
+  </div>
+</nz-modal>

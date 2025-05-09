@@ -1,0 +1,20 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 12px;
+}

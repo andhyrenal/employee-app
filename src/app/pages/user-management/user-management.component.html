@@ -1,0 +1,65 @@
+<button nz-button nzType="primary" (click)="showModal()">Tambah User</button>
+<div style="margin-top: 2rem;">
+  <nz-table [nzData]="users" [nzBordered]="true" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Tanggal Lahir</th>
+        <th>Email</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.dateOfbirth | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button nz-button nzType="link" (click)="showModal(user)">Edit</button>
+          <button nz-button nzType="link" nzDanger (click)="deleteUser(user.id)">Hapus</button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{ isEdit ? 'Edit User' : 'Tambah User' }}" (nzOnCancel)="handleCancel()">
+  <ng-container *nzModalContent>
+    <form [formGroup]="userForm">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">First Name</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'FirstName Harus Diisi'">
+          <input nz-input formControlName="firstName" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Last Name</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Lastname Harus Diisi'">
+          <input nz-input formControlName="lastName" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Tanggal Lahir</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Tanggal Lahir Harus Diisi'">
+          <nz-date-picker formControlName="dateOfbirth"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Email</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Email tidak valid'">
+          <input nz-input formControlName="email" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="6">Password</nz-form-label>
+        <nz-form-control [nzSpan]="16" [nzErrorTip]="'Password Harus Diisi'">
+          <input nz-input formControlName="password" />
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+    <button nz-button nzType="primary" (click)="handleOk()">Simpan</button>
+  </div>
+</nz-modal>

@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "dateOfBirth": "",
+      "email": "admin@mail.com",
+      "password": "123456",
+      "name": "Admin User" },
+    {
+      "id": 2,
+      "dateOfBirth": "",
+      "email": "user@mail.com",
+      "password": "password",
+      "name": "Regular User"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "email": "john@mail.com",
+      "password": "123456",
+      "firstname": "john",
+      "lastname": "doe",
+      "phone": 90909090990,
+      "address": "bandung",
+      "gender": "Laki - laki"
+    },
+    {
+      "id": 1,
+      "email": "grace@mail.com",
+      "password": "123456",
+      "firstname": "grace",
+      "lastname": "User",
+      "phone": 90909090990,
+      "address": "jakarta",
+      "gender": "Perempuan"
+    }
+  ]
+}
