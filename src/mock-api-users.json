@@ -1,0 +1,79 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "admin",
+      "lastName": "user",
+      "dateOfbirth": "2025-05-06T09:55:48.798Z",
+      "gender": null,
+      "email": "admin@mail.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "firstName": "test",
+      "lastName": "andhy",
+      "dateOfbirth": "2025-05-04T10:17:21.647Z",
+      "gender": "",
+      "email": "andhy@mail.com",
+      "password": "1232145214"
+    },
+    {
+      "firstName": "test",
+      "lastName": "user",
+      "dateOfbirth": "2025-05-04T10:26:56.301Z",
+      "gender": "",
+      "email": "user@mail.com",
+      "password": "143214124",
+      "id": "981d"
+    }
+  ],
+  "employees": [
+    {
+      "firstname": "john",
+      "lastname": "test",
+      "gender": "Perempuan",
+      "email": "john@mail.com",
+      "password": "5325235",
+      "phone": "12421421",
+      "address": "bandung",
+      "id": "1"
+    },
+    {
+      "id": "1",
+      "email": "grace@mail.com",
+      "password": "123456",
+      "firstname": "grace",
+      "lastname": "User",
+      "phone": 90909090990,
+      "address": "jakarta",
+      "gender": "Perempuan"
+    },
+    {
+      "id": "0945",
+      "firstname": "andhy",
+      "lastname": "test",
+      "gender": null,
+      "email": "andhy@mail.com",
+      "password": "1214214",
+      "phone": "6756546546",
+      "address": "sukabumi"
+    }
+  ],
+  "cuti": [
+    {
+      "employee": "john",
+      "startDate": "2025-05-04T11:03:03.190Z",
+      "endDate": "2025-05-05T11:03:07.607Z",
+      "reason": "test cutieeeeee",
+      "id": "1"
+    },
+    {
+      "id": "33",
+      "employee": "grace",
+      "startDate": "2025-05-19T11:06:21.455Z",
+      "endDate": "2025-05-21T11:06:23.272Z",
+      "reason": "testtetetst"
+    }
+  ]
+}
